@@ -61,7 +61,9 @@ resource "helm_release" "argocd" {
 //service account for backend pods
 resource "kubernetes_service_account" "backend_sa" {
   metadata {
-    name = "backend-service-account"
+    name = var.service_account_name
+    namespace = var.ENV_PREFIX
+    
     annotations = {
       "eks.amazonaws.com/role-arn" = module.external_secrets_irsa.arn
     }

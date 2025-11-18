@@ -9,7 +9,7 @@ resource "aws_iam_role_policy_attachment" "ecr_attachment" {
 }
 
 
-//iam policy for allowing access to secrets from secret manager
+//iam policy for allowing read access to secrets from secret manager
 module "iam_policy" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-policy"
 
@@ -52,7 +52,7 @@ module "external_secrets_irsa" {
   oidc_providers = {
     this = {
       provider_arn               = module.eks.oidc_provider_arn
-      namespace_service_accounts = ["default:my-app"]  # your service account namespace:name
+      namespace_service_accounts = ["${var.ENV_PREFIX}:${var.service_account_name}"]  # your service account namespace:name
     }
   }
 
