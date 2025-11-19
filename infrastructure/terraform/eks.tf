@@ -63,6 +63,8 @@ resource "kubernetes_namespace" "env" {
   metadata {
     name = var.ENV_PREFIX
   }
+
+  depends_on = [ module.eks ]
 }
 
 
@@ -124,11 +126,11 @@ spec:
 EOF
 )
 
-depends_on = [ helm_release.external_secrets, kubernetes_service_account.eso_sa ]
+depends_on = [module.eks, helm_release.external_secrets, kubernetes_service_account.eso_sa ]
 
 }
 
-//external secrete
+//external secret
 resource "kubernetes_manifest" "external_secrets_manifest" {
   manifest = yamldecode(<<EOF
 apiVersion: external-secrets.io/v1
@@ -168,5 +170,5 @@ spec:
 EOF
 )
 
-  depends_on = [ kubernetes_manifest.secretstore ]
+  depends_on = [module.eks, kubernetes_manifest.secretstore ]
 }
