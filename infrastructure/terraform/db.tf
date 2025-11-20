@@ -27,7 +27,7 @@ module "db_sg" {
       to_port     = 5432
       protocol    = "tcp"
       description = "PostgreSQL access from within VPC"
-      cidr_blocks = [module.vpc.vpc_cidr_block]  # wrap in list
+      cidr_blocks = module.vpc.vpc_cidr_block 
     }
   ]
 
