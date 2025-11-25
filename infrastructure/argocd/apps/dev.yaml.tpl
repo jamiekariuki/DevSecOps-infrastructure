@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root
+  name: app-dev
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
-    targetRevision: HEAD
-    path: guestbook
+    repoURL: "${repo_url}"
+    targetRevision: "${target_revision}"
+    path: kustomize/overlays/dev
   destination:
     server: https://kubernetes.default.svc
-    namespace: guestbook
+    namespace: dev
   syncPolicy:
     automated:
       prune: true

@@ -14,6 +14,10 @@ inputs:
     required: true
   directory:
     required: true
+  repo_url:
+    required: true
+  target_revision:
+    required: true
 
 runs:
   using: "composite"
@@ -36,8 +40,11 @@ runs:
   - name: Terraform Apply
     working-directory: ${{inputs.directory}}
     shell: bash
-    run: |
+    run: |+
       terraform apply -auto-approve -input=false \
         -var="aws_account_id=${{ inputs.aws_account_id }}" \
         -var="region=${{ inputs.region }}" \
-        -var="cluster_name=${{ inputs.cluster_name }}"
+        -var="cluster_name=${{ inputs.cluster_name }}" \
+        -var="repo_url=${{ inputs.repo_url }}" \
+        -var="target_revision=${{ inputs.target_revision }}" \
+        

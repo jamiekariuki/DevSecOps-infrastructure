@@ -58,17 +58,20 @@ encryption_config = {
   }
 }
 
-/* //helm resource for argocd  (installing argocd)
+
+//helm resource for argocd  (installing argocd)
 resource "helm_release" "argocd" {
   name             = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
-  version          = "7.4.3"
+  version          = "9.1.4"
   namespace        = "argocd"
   create_namespace = true
 
-  depends_on = [module.eks]
-} */
+  depends_on = [ module.eks ]
+}
+
+
 
 
 /* resource "kubernetes_namespace" "env" {
