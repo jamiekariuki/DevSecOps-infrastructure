@@ -87,13 +87,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: ./.github/actions/helm
+    - uses: ./.github/actions/argocd-run
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         region: ${{ secrets.REGION }}
         cluster_name: ${{ secrets.CLUSTER_NAME }}
         aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+        directory: terraform/helm
 
   app-configure-independent:
     runs-on: ubuntu-latest
