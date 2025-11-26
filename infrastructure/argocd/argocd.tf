@@ -1,9 +1,7 @@
 locals {
   namespaces = [
     "monitoring",
-    "dev",
-    "stage",
-    "prod"
+    "externalsecret"
   ]
 }
 
@@ -16,16 +14,13 @@ resource "kubernetes_namespace" "namespaces" {
   }
 }
 
+resource "kubernetes_namespace" "env" {
+  metadata {
+    name = var.ENV_PREFIX
+  }
+}
+ 
 #app of apps
-variable "repo_url" {
-  type    = string
-  default = "https://github.com/your-org/my-gitops-repo.git"
-}
-
-variable "target_revision" {
-  type    = string
-  default = "main"
-}
 
 locals {
   argocd_manifests = fileset("${path.module}/apps", "*.yaml.tpl")
