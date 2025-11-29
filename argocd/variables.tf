@@ -18,6 +18,14 @@ variable "target_revision" {
   type = string
 }
 
+variable "chart_url" {
+  type = string
+}
+
+variable "branch" {
+  type = string
+}
+
 variable "ENV_PREFIX" {
     type = string
 

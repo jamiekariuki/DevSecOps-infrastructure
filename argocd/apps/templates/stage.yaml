@@ -1,17 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitoring
+  name: app-stage
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: "${repo_url}"
-    targetRevision: "${target_revision}"
-    path: chart/monitoring
+    repoURL: {{ .Values.repoURL }}
+    targetRevision: {{ .Values.targetRevision }}
+    path: {{ .Values.app.path }}
+    helm:
+      valueFiles:
+      - {{ .Values.app.values.stage }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: stage
   syncPolicy:
     automated:
       prune: true

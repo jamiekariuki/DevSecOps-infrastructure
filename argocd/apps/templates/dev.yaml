@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "${repo_url}"
-    targetRevision: "${target_revision}"
-    path: app
+    repoURL: {{ .Values.repoURL }}
+    targetRevision: {{ .Values.targetRevision }}
+    path: {{ .Values.app.path }}
     helm:
       valueFiles:
-        - values-dev.yaml
+      - {{ .Values.app.values.dev }}
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
@@ -19,4 +19,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-

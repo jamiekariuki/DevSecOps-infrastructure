@@ -1,0 +1,12 @@
+repoURL: "https://github.com/jamiekariuki/DevSecOps-helm-charts.git"
+targetRevision: main
+
+app:
+  path: app
+  values:
+    dev: values-dev.yaml
+    stage: values-dev.yaml
+    prod: values-prod.yaml
+
+monitoring:
+  path: monitoring

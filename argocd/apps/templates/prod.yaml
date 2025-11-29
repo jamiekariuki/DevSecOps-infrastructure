@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "${repo_url}"
-    targetRevision: "${target_revision}"
-    path: app
+    repoURL: {{ .Values.repoURL }}
+    targetRevision: {{ .Values.targetRevision }}
+    path: {{ .Values.app.path }}
     helm:
       valueFiles:
-        - values-prod.yaml
+      - {{ .Values.app.values.prod }}
   destination:
     server: https://kubernetes.default.svc
     namespace: prod

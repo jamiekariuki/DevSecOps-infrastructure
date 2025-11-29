@@ -21,20 +21,17 @@ resource "kubernetes_namespace" "env" {
 }
  
 #app of apps
-locals {
-  argocd_manifests = fileset("${path.module}/apps", "*.yaml.tpl")
-}
-
-resource "kubernetes_manifest" "argocd_apps" {
+resource "helm_release" "app_of_apps" {
   depends_on = [ kubernetes_namespace.env, kubernetes_namespace.namespaces ]
 
-  for_each = { for f in local.argocd_manifests : trim(f, ".tpl") => f }
+  name       = "apps"
+  chart      = "${path.module}/apps"
+  namespace  = "argocd"
 
-  manifest = yamldecode(templatefile("${path.module}/apps/${each.value}", {
-    repo_url        = var.repo_url
-    target_revision = var.target_revision
-    env_prefix      = var.ENV_PREFIX
-  }))
+  values = [
+    file("${path.module}/apps/values.yaml")
+  ]
 }
+
 
 
