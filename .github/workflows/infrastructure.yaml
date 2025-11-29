@@ -95,11 +95,6 @@ jobs:
         cluster_name: ${{ secrets.CLUSTER_NAME }}
         aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
         directory: argocd
-        repo_url: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
-        target_revision: ${GITHUB_REF_NAME}
-        chart_url: ${{vars.CHART_URL}}
-        branch: ${{vars.BRANCH}}
-        environment: ${{ env.ENVIRONMENT }}
 
   # Step 3: ArgoCD Apply - Dependent path (both changed, waits for terraform)
   argocd-dependent:
@@ -119,8 +114,4 @@ jobs:
         cluster_name: ${{ secrets.CLUSTER_NAME }}
         aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
         directory: argocd
-        repo_url: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
-        target_revision: ${GITHUB_REF_NAME}
-        chart_url: ${{vars.CHART_URL}}
-        branch: ${{vars.BRANCH}}
-        environment: ${{ env.ENVIRONMENT }}
+        

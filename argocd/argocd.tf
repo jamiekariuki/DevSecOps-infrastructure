@@ -1,5 +1,8 @@
 locals {
   namespaces = [
+    "dev",
+    "stage",
+    "prod",
     "monitoring",
     "externalsecret"
   ]
@@ -14,15 +17,10 @@ resource "kubernetes_namespace" "namespaces" {
   }
 }
 
-resource "kubernetes_namespace" "env" {
-  metadata {
-    name = var.ENV_PREFIX
-  }
-}
  
 #app of apps
 resource "helm_release" "app_of_apps" {
-  depends_on = [ kubernetes_namespace.env, kubernetes_namespace.namespaces ]
+  depends_on = [ kubernetes_namespace.namespaces ]
 
   name       = "apps"
   chart      = "${path.module}/apps"

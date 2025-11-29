@@ -13,17 +13,7 @@ inputs:
   aws_account_id:
     required: true
   directory:
-    required: true
-  repo_url:
-    required: true
-  target_revision:
-    required: true
-  environment:
-    required: true
-  repo_url:
-    required: true
-  branch:
-    required: true    
+    required: true   
 
 runs:
   using: "composite"
@@ -51,9 +41,4 @@ runs:
         -var="aws_account_id=${{ inputs.aws_account_id }}" \
         -var="region=${{ inputs.region }}" \
         -var="cluster_name=${{ inputs.cluster_name }}" \
-        -var="repo_url=${{ inputs.repo_url }}" \
-        -var="target_revision=${{ inputs.target_revision }}" \
-        -var="chart_url=${{ inputs.chart_url }}" \
-        -var="branch=${{ inputs.branch }}" \
-        -var="ENV_PREFIX=${{ inputs.environment }}"
         
