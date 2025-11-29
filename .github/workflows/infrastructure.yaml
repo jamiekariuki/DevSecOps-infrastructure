@@ -34,9 +34,9 @@ jobs:
       with:
         filters: |
           terraform:
-            - 'terraform/infrastructure/**'
+            - 'infrastructure/**'
           argocd:
-            - 'terraform/argocd/**'
+            - 'argocd/**'
 
     - id: check_both
       run: |
@@ -65,7 +65,7 @@ jobs:
         db_name: ${{ secrets.DB_NAME }}
         service_account_name: ${{ secrets.SERVICE_ACCOUNT_NAME }}
         environment: ${{ env.ENVIRONMENT }}
-        directory: terraform/infrastructure
+        directory: infrastructure
 
   # Dummy job to act as a gate when both changed
   terraform-gate:
@@ -94,7 +94,7 @@ jobs:
         region: ${{ secrets.REGION }}
         cluster_name: ${{ secrets.CLUSTER_NAME }}
         aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-        directory: terraform/argocd
+        directory: argocd
         repo_url: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
         target_revision: ${GITHUB_REF_NAME}
         environment: ${{ env.ENVIRONMENT }}
@@ -116,7 +116,7 @@ jobs:
         region: ${{ secrets.REGION }}
         cluster_name: ${{ secrets.CLUSTER_NAME }}
         aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-        directory: terraform/argocd
+        directory: argocd
         repo_url: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
         target_revision: ${GITHUB_REF_NAME}
         environment: ${{ env.ENVIRONMENT }}

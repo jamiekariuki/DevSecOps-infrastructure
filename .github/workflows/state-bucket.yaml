@@ -22,11 +22,11 @@ jobs:
         aws-region: ${{ secrets.REGION }}
 
     - name: Terraform Init
-      working-directory: infrastructure/state-bucket
+      working-directory: state-bucket
       run: terraform init -upgrade
 
     - name: Terraform Apply
-      working-directory: infrastructure/state-bucket
+      working-directory: state-bucket
       env:
         TF_IN_AUTOMATION: true
         AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
