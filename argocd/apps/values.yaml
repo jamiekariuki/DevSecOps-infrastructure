@@ -5,7 +5,7 @@ app:
   path: app
   values:
     dev: values-dev.yaml
-    stage: values-dev.yaml
+    stage: values-stage.yaml
     prod: values-prod.yaml
 
 monitoring:
