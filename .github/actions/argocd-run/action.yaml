@@ -13,7 +13,7 @@ inputs:
   aws_account_id:
     required: true
   directory:
-    required: true   
+    required: true
 
 runs:
   using: "composite"
