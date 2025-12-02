@@ -13,7 +13,7 @@ resource "aws_iam_role_policy_attachment" "ecr_attachment" {
 module "iam_policy" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-policy"
 
-  name        = "read-secretes"
+  name        = "read-secretes-iam"
   path        = "/"
   description = "iam policy for allowing access to secrets from secret manager"
 
