@@ -78,11 +78,7 @@ resource "helm_release" "argocd" {
           }
         }
       }
-      configs = {
-        secret = {
-          argocdServerAdminPassword = "12345" 
-        }
-      }
+      
     })
   ]
 
