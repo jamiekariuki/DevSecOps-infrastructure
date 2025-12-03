@@ -4,8 +4,6 @@ module "ecr-frontend" {
 
   repository_name = "frontend-repository"
 
-  
-
   repository_lifecycle_policy = jsonencode({
     rules = [
       {
