@@ -34,11 +34,11 @@ jobs:
         aws-region: ${{ secrets.REGION }}
 
     - name: Terraform Init
-      working-directory: infrastructure
+      working-directory: argocd
       run: terraform init -upgrade
 
     - name: Select Terraform Workspace
-      working-directory: infrastructure
+      working-directory: argocd
       run: terraform workspace select -or-create=true $ENVIRONMENT
 
     - name: Terraform Destroy
