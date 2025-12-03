@@ -68,6 +68,24 @@ resource "helm_release" "argocd" {
   namespace        = "argocd"
   create_namespace = true
 
+  values = [
+    yamlencode({
+      server = {
+        service = {
+          type = "LoadBalancer"
+          annotations = {
+            "service.beta.kubernetes.io/aws-load-balancer-scheme" = "internet-facing"
+          }
+        }
+      }
+      configs = {
+        secret = {
+          argocdServerAdminPassword = "12345" 
+        }
+      }
+    })
+  ]
+
   depends_on = [ module.eks ]
 }
 
