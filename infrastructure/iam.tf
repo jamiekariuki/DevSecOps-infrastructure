@@ -1,4 +1,4 @@
-//policy for eks to read ecr
+/* //policy for eks to read ecr
 data "aws_iam_policy" "read_ecr" {
   arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }
@@ -61,3 +61,4 @@ module "external_secrets_irsa" {
   }
   
 }
+ */

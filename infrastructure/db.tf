@@ -1,4 +1,4 @@
-// DB Subnet Group
+/* // DB Subnet Group
 resource "aws_db_subnet_group" "db_subnet_group" {
   name       = "${var.ENV_PREFIX}-db-subnet-group"
   description = "Subnet group for ${var.ENV_PREFIX} RDS"
@@ -117,4 +117,4 @@ module "db" {
     Environment = var.ENV_PREFIX
     Terraform   = "true"
   }
-}
+} */

@@ -1,4 +1,4 @@
-//kms encryption for eks secrets in etcd
+/* //kms encryption for eks secrets in etcd
 resource "aws_kms_key" "k8s_encryption" {
   description             = "KMS key for encrypting EKS secrets"
   deletion_window_in_days = 10
@@ -71,7 +71,7 @@ resource "helm_release" "argocd" {
   depends_on = [ module.eks ]
 }
 
-
+ */
 
 
 /* resource "kubernetes_namespace" "env" {

@@ -4,6 +4,8 @@ module "ecr-frontend" {
 
   repository_name = "frontend-repository"
 
+  
+
   repository_lifecycle_policy = jsonencode({
     rules = [
       {
@@ -32,7 +34,7 @@ module "ecr-backend" {
   source = "terraform-aws-modules/ecr/aws"
 
   repository_name = "backend-repository"
-
+ 
   repository_lifecycle_policy = jsonencode({
     rules = [
       {

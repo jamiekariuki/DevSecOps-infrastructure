@@ -1,5 +1,5 @@
 //vpc
-module "vpc" {
+/* module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
   name = "${var.cluster_name}-vpc"
@@ -28,4 +28,4 @@ module "vpc" {
     "kubernetes.io/cluster/${var.cluster_name}"= "shared"
     "kubernetes.io/role/internal-elb"= 1
   }
-}
+} */

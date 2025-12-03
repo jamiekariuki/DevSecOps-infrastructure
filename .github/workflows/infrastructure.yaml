@@ -2,7 +2,7 @@ name: Terraform
 
 on:
   push:
-    branches: [ main ]
+    branches: [ mainx ]
 
   workflow_dispatch:
     inputs:
