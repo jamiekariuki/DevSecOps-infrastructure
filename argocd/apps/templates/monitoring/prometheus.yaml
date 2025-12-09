@@ -16,6 +16,9 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - Validate=false
+    - ApplyOutOfSyncOnly=true  
   metadata:
     annotations:
       argocd.argoproj.io/sync-wave: {{ .Values.prometheus.syncWave }}    
