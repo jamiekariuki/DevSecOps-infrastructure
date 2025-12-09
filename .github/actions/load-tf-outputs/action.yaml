@@ -1,0 +1,19 @@
+name: Load TF Outputs
+description: Downloads Terraform outputs artifact and loads them into environment variables
+
+runs:
+  using: "composite"
+  steps:
+  - name: Download TF outputs artifact
+    uses: actions/download-artifact@v4
+    with:
+      name: tf-outputs
+      path: ./tf-data
+
+  - name: Load TF outputs into env
+    shell: bash
+    run: |
+      IRSA_ARN=$(jq -r .irsa_arn ./tf-data/tf-outputs.json)
+      SECRETSMANAGER_ARN=$(jq -r .SecretsManager_arn ./tf-data/tf-outputs.json)
+      echo "IRSA_ARN=$IRSA_ARN" >> $GITHUB_ENV
+      echo "SECRETSMANAGER_ARN=$SECRETSMANAGER_ARN" >> $GITHUB_ENV

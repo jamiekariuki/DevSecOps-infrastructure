@@ -105,7 +105,7 @@ encryption_config = {
       "eks.amazonaws.com/role-arn" = module.external_secrets_irsa.arn
     }
   }
-
+ 
   depends_on = [module.eks, kubernetes_namespace.env]
 } */
 
