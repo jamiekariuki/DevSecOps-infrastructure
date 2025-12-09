@@ -9,12 +9,12 @@ app:
     prod: values-prod.yaml
 
 prometheus:
-  name: prometheus2
+  name: prometheus
   path: monitoring/prometheus
   syncWave: "-9"
 
 prometheusCrd:
-  name: prometheuscrd
+  name: prometheus-crd
   path: monitoring/prometheus-crd
   syncWave: "-10"
 
