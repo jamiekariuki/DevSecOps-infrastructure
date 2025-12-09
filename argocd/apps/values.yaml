@@ -17,3 +17,6 @@ prometheusCrd:
   name: prometheus-crd
   path: monitoring/prometheus-crd
   syncWave: "-10"
+
+
+ #chart 
