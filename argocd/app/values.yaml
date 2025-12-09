@@ -2,8 +2,8 @@ repoURL: "https://github.com/jamiekariuki/DevSecOps-infrastructure.git"
 targetRevision: main
 
 app:
-  name: root
-  path: infrastructure/argocd-apps
+  name: root-app
+  path: argocd-apps
 
 
 
