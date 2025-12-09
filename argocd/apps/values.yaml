@@ -9,7 +9,7 @@ app:
     prod: values-prod.yaml
 
 prometheus:
-  name: prometheus
+  name: prometheus2
   path: monitoring/prometheus
   syncWave: "-9"
 
