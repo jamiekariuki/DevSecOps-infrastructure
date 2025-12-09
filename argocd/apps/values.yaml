@@ -8,5 +8,12 @@ app:
     stage: values-stage.yaml
     prod: values-prod.yaml
 
-monitoring:
-  path: monitoring
+prometheus:
+  name: prometheus
+  path: monitoring/prometheus
+  syncWave: "-9"
+
+prometheusCrd:
+  name: prometheus-crd
+  path: monitoring/prometheus-crd
+  syncWave: "-10"

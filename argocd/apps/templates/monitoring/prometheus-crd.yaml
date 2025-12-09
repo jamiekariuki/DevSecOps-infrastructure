@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitoring
+  name: {{ .Values.prometheusCrd.name }}
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: {{ .Values.repoURL }}
     targetRevision: {{ .Values.targetRevision }}
-    path: {{ .Values.monitoring.path }}
+    path: {{ .Values.prometheusCrd.path }}
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -16,3 +16,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
+  metadata:
+    annotations:
+      argocd.argoproj.io/sync-wave: {{ .Values.prometheusCrd.syncWave }}
