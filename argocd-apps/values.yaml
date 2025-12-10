@@ -1,6 +1,9 @@
 repoURL: "https://github.com/jamiekariuki/DevSecOps-helm-charts.git"
 targetRevision: main
 
+currentRepoURL: "https://github.com/jamiekariuki/DevSecOps-infrastructure.git"
+currentPath: argocd-apps
+
 app:
   path: app
   values:
@@ -9,11 +12,19 @@ app:
     prod: values-prod.yaml
 
 prometheus:
-  name: prometheusx
-  path: monitoring/prometheus
-  syncWave: "-9"
+  name: prometheus
+  namespace: monitoroing
+  repoURL: https://prometheus-community.github.io/helm-charts
+  chart: kube-prometheus-stack
+  version: "65.1.0"
+  syncWaves: "-10"
+  valueFiles: prometheus.yaml
 
-prometheusCrd:
-  name: prometheusx
-  path: monitoring/prometheus-crd
-  syncWave: "-10"
+gateway:
+  name: gateway-api
+  namespace: envoy-gateway-system
+  repoURL: oci://docker.io/envoyproxy/gateway-helm
+  chart: gateway-helm
+  version: "1.6.1"
+  syncWaves: "-10"
+  valueFiles: gateway.yaml  

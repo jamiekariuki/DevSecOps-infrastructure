@@ -1,0 +1,19 @@
+prometheus-operator:
+  enabled: true
+  manageCrds: true
+
+prometheus:
+  enabled: true
+
+grafana:
+  enabled: true
+  adminPassword: "prometheus"
+
+alertmanager:
+  enabled: true
+
+nodeExporter:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true

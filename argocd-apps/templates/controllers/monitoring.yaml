@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.prometheus.name }}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: {{ .Values.prometheus.syncWaves }}
+spec:
+  project: default
+  source:
+  - repoURL: {{ .Values.prometheus.repoURL }}
+    chart: {{ .Values.prometheus.chart }}
+    targetRevision: {{ .Values.prometheus.version }}
+    helm:
+      valueFiles: 
+      - $values/{{ .Values.currentPath }}/{{ .Values.prometheus.valuesFile }}
+   #   - $values/argocd-apps/prometheus.yaml
+  - repoURL: {{ .Values.currentRepoURL }}
+    targetRevision: main
+    path: {{ .Values.currentPath }}
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ .Values.prometheus.namespace }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - Validate=false
+    - ServerSideApply=true
+    - SkipDryRunOnMissingResource=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+
+
+
+
+
+
+
