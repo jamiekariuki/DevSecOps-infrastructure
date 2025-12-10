@@ -1,15 +1,16 @@
 repoURL: "https://github.com/jamiekariuki/DevSecOps-helm-charts.git"
 targetRevision: main
 
-currentRepoURL: "https://github.com/jamiekariuki/DevSecOps-infrastructure.git"
-currentPath: controllers
-
 app:
   path: app
   values:
     dev: values-dev.yaml
     stage: values-stage.yaml
     prod: values-prod.yaml
+
+########################################################
+#                      controllers   
+########################################################
 
 prometheus:
   name: prometheus
@@ -18,13 +19,12 @@ prometheus:
   chart: kube-prometheus-stack
   version: "65.1.0"
   syncWaves: "-10"
-  valueFiles: prometheus.yaml
-
+ 
 gateway:
   name: gateway-api
   namespace: envoy-gateway-system
   repoURL: oci://docker.io/envoyproxy/gateway-helm
   chart: gateway-helm
-  version: "1.6.1"
+  version: "v1.6.1"
   syncWaves: "-10"
-  valueFiles: gateway.yaml  
+   

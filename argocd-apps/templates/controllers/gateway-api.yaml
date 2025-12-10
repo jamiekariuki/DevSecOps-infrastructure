@@ -7,18 +7,13 @@ metadata:
     argocd.argoproj.io/sync-wave: {{ .Values.gateway.syncWaves | quote }}
 spec:
   project: default
-  sources:
-  - repoURL: {{ .Values.gateway.repoURL }}
+  source:
+    repoURL: {{ .Values.gateway.repoURL }}
     chart: {{ .Values.gateway.chart }}
     targetRevision: {{ .Values.gateway.version }}
-    helm:
-      valueFiles:
-      - $values/gateway.yaml
-  - repoURL: {{ .Values.currentRepoURL }}
-    targetRevision: main
-    path: {{ .Values.currentPath }}
-    ref: values
-    
+ #   helm:
+ #     values: |
+
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.gateway.namespace }}
