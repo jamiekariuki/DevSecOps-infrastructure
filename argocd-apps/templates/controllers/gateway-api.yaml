@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.gateway.name }}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: {{ .Values.gateway.syncWaves | quote }}
+spec:
+  project: default
+  source:
+  - repoURL: {{ .Values.gateway.repoURL }}
+    chart: {{ .Values.gateway.chart }}
+    targetRevision: {{ .Values.gateway.version }}
+    helm:
+      valueFiles:
+      - $values/{{ .Values.currentPath }}/{{ .Values.gateway.valuesFile }}
+  #   - $values/argocd-apps/gateway.yaml
+  - repoURL: {{ .Values.currentRepoURL }}
+    targetRevision: main
+    path: {{ .Values.currentPath }}
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ .Values.gateway.namespace }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - Validate=false
+    - ServerSideApply=true
+    - SkipDryRunOnMissingResource=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

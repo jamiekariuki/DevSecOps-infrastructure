@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.prometheus.name }}
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.prometheus.syncWaves }}
+    argocd.argoproj.io/sync-wave: {{ .Values.prometheus.syncWaves | quote }}
 spec:
   project: default
   source:
