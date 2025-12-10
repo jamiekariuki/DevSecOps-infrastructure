@@ -28,3 +28,10 @@ gateway:
   version: "v1.6.1"
   syncWaves: "-10"
    
+certManager:
+  name: cert-manager
+  namespace: cert-manager
+  repoURL: oci://quay.io/jetstack/charts/cert-manager
+  chart: cert-manager
+  version: "v1.19.2"
+  syncWaves: "-10"
