@@ -18,6 +18,7 @@ spec:
     targetRevision: main
     path: {{ .Values.currentPath }}
     ref: values
+    
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.gateway.namespace }}
