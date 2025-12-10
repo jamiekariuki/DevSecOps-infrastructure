@@ -13,8 +13,7 @@ spec:
     targetRevision: {{ .Values.gateway.version }}
     helm:
       valueFiles:
-      - $values/{{ .Values.currentPath }}/{{ .Values.gateway.valuesFile }}
-  #   - $values/argocd-apps/gateway.yaml
+      - $values/gateway.yaml
   - repoURL: {{ .Values.currentRepoURL }}
     targetRevision: main
     path: {{ .Values.currentPath }}

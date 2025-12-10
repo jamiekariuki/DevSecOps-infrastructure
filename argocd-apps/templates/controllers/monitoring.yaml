@@ -13,8 +13,7 @@ spec:
     targetRevision: {{ .Values.prometheus.version }}
     helm:
       valueFiles: 
-      - $values/{{ .Values.currentPath }}/{{ .Values.prometheus.valuesFile }}
-   #   - $values/argocd-apps/prometheus.yaml
+      - $values/prometheus.yaml
   - repoURL: {{ .Values.currentRepoURL }}
     targetRevision: main
     path: {{ .Values.currentPath }}
