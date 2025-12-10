@@ -7,12 +7,12 @@ metadata:
     argocd.argoproj.io/sync-wave: {{ .Values.prometheus.syncWaves | quote }}
 spec:
   project: default
-  sources:
-  - repoURL: {{ .Values.prometheus.repoURL }}
+  source:
+    repoURL: {{ .Values.prometheus.repoURL }}
     chart: {{ .Values.prometheus.chart }}
     targetRevision: {{ .Values.prometheus.version }}
     helm:
-      value: |
+      values: |
         prometheus-operator:
           enabled: true
           manageCrds: true
