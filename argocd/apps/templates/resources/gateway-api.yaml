@@ -14,7 +14,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.gateway.namespace }}
+    namespace: {{ .Values.gatewayCr.namespace }}
   syncPolicy:
     automated:
       prune: true
