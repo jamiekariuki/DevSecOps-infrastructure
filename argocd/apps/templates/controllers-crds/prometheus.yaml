@@ -24,6 +24,10 @@ spec:
         grafana:
           enabled: true
           adminPassword: "prometheus"
+          grafana.ini:
+            server:
+              root_url: http://grafana.example.com
+              serve_from_sub_path: true
         
         alertmanager:
           enabled: true
