@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: {{ .Values.app.syncWaves | quote }}
-    argocd.argoproj.io/hook: {{ .Values.app.hook }}
+  #  argocd.argoproj.io/hook: {{ .Values.app.hook }}
 spec:
   project: default
   source:
