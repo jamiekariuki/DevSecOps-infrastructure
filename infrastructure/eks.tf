@@ -68,7 +68,7 @@ encryption_config = {
   namespace        = "argocd"
   create_namespace = true
 
-/*   values = [
+   values = [
     yamlencode({
       server = {
         service = {
@@ -80,7 +80,7 @@ encryption_config = {
       }
       
     })
-  ] */
+  ] 
 
   depends_on = [ module.eks ]
 } 
