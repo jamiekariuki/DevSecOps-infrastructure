@@ -1,30 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.certManager.name }}
+  name: {{ .Values.prometheusCr.name }}
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.certManager.syncWaves | quote }}
+    argocd.argoproj.io/sync-wave: {{ .Values.prometheusCr.syncWaves | quote }}
+    argocd.argoproj.io/hook: {{ .Values.prometheusCr.hook }}
 spec:
   project: default
   source:
-    repoURL: {{ .Values.certManager.repoURL }}
-    chart: {{ .Values.certManager.chart }}
-    targetRevision: {{ .Values.certManager.version }}
-    helm:
-      values: |
-        crds:
-          enabled: true
+    repoURL: {{ .Values.repoURL }}
+    path: {{ .Values.prometheusCr.path }}
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.certManager.namespace }}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+    - CreateNamespace=false
     - Validate=false
     - ServerSideApply=true
     - SkipDryRunOnMissingResource=true

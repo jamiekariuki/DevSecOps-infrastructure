@@ -3,8 +3,6 @@ locals {
     "dev",
     "stage",
     "prod",
-    "monitoring",
-    "externalsecret"
   ]
 }
 

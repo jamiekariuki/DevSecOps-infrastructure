@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.certManagerCr.name }}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: {{ .Values.certManagerCr.syncWaves | quote }}
+    argocd.argoproj.io/hook: {{ .Values.certManagerCr.hook }}
+spec:
+  project: default
+  source:
+    repoURL: {{ .Values.repoURL }}
+    path: {{ .Values.certManagerCr.path }}
+
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=false
+    - Validate=false
+    - ServerSideApply=true
+    - SkipDryRunOnMissingResource=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

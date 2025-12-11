@@ -1,16 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.prometheus.name }}
+  name: {{ .Values.prometheusCrd.name }}
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.prometheus.syncWaves | quote }}
+    argocd.argoproj.io/sync-wave: {{ .Values.prometheusCrd.syncWaves | quote }}
+    argocd.argoproj.io/hook: {{ .Values.prometheusCrd.hook }}
 spec:
   project: default
   source:
-    repoURL: {{ .Values.prometheus.repoURL }}
-    chart: {{ .Values.prometheus.chart }}
-    targetRevision: {{ .Values.prometheus.version }}
+    repoURL: {{ .Values.prometheusCrd.repoURL }}
+    chart: {{ .Values.prometheusCrd.chart }}
+    targetRevision: {{ .Values.prometheusCrd.version }}
     helm:
       values: |
         prometheus-operator:
@@ -35,7 +36,7 @@ spec:
       
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.prometheus.namespace }}
+    namespace: {{ .Values.prometheusCrd.namespace }}
   syncPolicy:
     automated:
       prune: true
