@@ -52,6 +52,7 @@ certManagerCrd:
 
 gatewayCr:
   name: gateway-api-cr
+  namespace: gateway
   path: gateway
   hook: Sync
   syncWaves: "-9" #2nd

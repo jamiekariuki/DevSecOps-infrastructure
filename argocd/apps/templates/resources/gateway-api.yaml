@@ -14,12 +14,13 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
+    namespace: {{ .Values.gateway.namespace }}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     - Validate=false
     - ServerSideApply=true
     - SkipDryRunOnMissingResource=true
