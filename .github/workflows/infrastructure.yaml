@@ -108,7 +108,7 @@ jobs:
           "${{ secrets.SERVICE_ACCOUNT_NAME }}" \
           "${{ env.IRSA_ARN }}" \
           "${{ env.SECRETSMANAGER_ARN }}" \
-          "app" \
+          "eso" \
           "${{ env.ENVIRONMENT }}" \
           "${{ secrets.REGION }}" 
 

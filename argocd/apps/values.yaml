@@ -23,9 +23,9 @@ prometheusCrd:
   namespace: monitoring
   repoURL: https://prometheus-community.github.io/helm-charts
   chart: kube-prometheus-stack
-  version: "65.1.0"
+  version: "80.3.0"
   hook: PreSync
-  syncWaves: "-10"
+  syncWaves: "-9"
 
 gatewayCrd:
   name: gateway-api-crd
@@ -45,10 +45,28 @@ certManagerCrd:
   hook: PreSync
   syncWaves: "-10"
 
+lokiCrd:
+  name: loki-crd
+  namespace: loki
+  repoURL: https://grafana.github.io/helm-charts
+  chart: loki
+  version: "6.49.0"
+  hook: PreSync
+  syncWaves: "-10"  
+
+promtailCrd:
+  name: promtail-crd
+  namespace: promtail
+  repoURL: https://grafana.github.io/helm-charts
+  chart: promtail
+  version: "6.49.0"
+  hook: PreSync
+  syncWaves: "-10" 
+
 
 #=======================================================
-#                      resources  
-#======================================================
+#                      resources                       
+#=======================================================
 
 gatewayCr:
   name: gateway-api-cr
@@ -66,5 +84,11 @@ certManagerCr:
 prometheusCr:
   name: prometheus-cr
   path: prometheus
+  hook: Sync
+  syncWaves: "-1"
+
+argocdCr:
+  name: argocd-cr
+  path: argocd
   hook: Sync
   syncWaves: "-8"
