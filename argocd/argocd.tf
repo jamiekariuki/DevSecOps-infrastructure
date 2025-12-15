@@ -20,7 +20,7 @@ resource "kubernetes_namespace" "namespaces" {
 resource "helm_release" "app_of_apps" {
   depends_on = [ kubernetes_namespace.namespaces ]
 
-  name       = "root"
+  name       = "root-app"
   chart      = "${path.module}/app"
   namespace  = "argocd"
 
