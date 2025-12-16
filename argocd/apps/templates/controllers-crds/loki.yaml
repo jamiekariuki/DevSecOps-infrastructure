@@ -21,6 +21,17 @@ spec:
               chunks: loki-chunks
               ruler: loki-ruler
               admin: loki-admin
+        write:
+          affinity:
+            podAntiAffinity: null
+          
+        read:
+          affinity:
+            podAntiAffinity: null
+          
+        backend:
+          affinity:
+            podAntiAffinity: null      
          
 
   destination:
