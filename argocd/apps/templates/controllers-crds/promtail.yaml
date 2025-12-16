@@ -12,8 +12,11 @@ spec:
     repoURL: {{ .Values.promtailCrd.repoURL }}
     chart: {{ .Values.promtailCrd.chart }}
     targetRevision: {{ .Values.promtailCrd.version }}
- #   helm:
- #     values: |
+    helm:
+      values: |
+        config:
+          clients:
+            - url: http://loki-crd-gateway/loki/api/v1/push
 
   destination:
     server: https://kubernetes.default.svc

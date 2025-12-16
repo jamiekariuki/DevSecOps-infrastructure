@@ -28,10 +28,10 @@ spec:
             url: http://prometheus-crd-kube-promet-prometheus:9090
             access: proxy
             isDefault: true  
-              
+
           - name: Loki
             type: loki
-            url: http://loki.monitoring.svc.cluster.local:3100
+            url: http://loki-crd-gateway:80
             access: proxy
             version: 1
             orgId: 1
