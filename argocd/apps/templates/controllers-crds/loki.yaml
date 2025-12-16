@@ -22,16 +22,13 @@ spec:
               ruler: loki-ruler
               admin: loki-admin
         write:
-          affinity:
-            podAntiAffinity: null
+          affinity: null
           
         read:
-          affinity:
-            podAntiAffinity: null
+          affinity: null
           
         backend:
-          affinity:
-            podAntiAffinity: null      
+          affinity: null      
          
 
   destination:
