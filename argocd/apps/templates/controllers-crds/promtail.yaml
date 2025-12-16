@@ -15,6 +15,7 @@ spec:
     helm:
       values: |
         config:
+          serverPort: 80
           clients:
             - url: http://loki-crd-gateway/loki/api/v1/push
 
