@@ -12,12 +12,18 @@ spec:
     repoURL: {{ .Values.lokiCrd.repoURL }}
     chart: {{ .Values.lokiCrd.chart }}
     targetRevision: {{ .Values.lokiCrd.version }}
- #   helm:
- #     values: |
+    helm:
+      values: |
+        loki:
+          storage:
+            bucketNames:
+              chunks: loki-chunks
+              ruler: loki-ruler
+              admin: loki-admin
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.lokiCrd.namespace }}
+    namespace: {{ .Values.lokiCrd.namespace }} 
   syncPolicy:
     automated:
       prune: true

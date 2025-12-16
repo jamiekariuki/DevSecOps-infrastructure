@@ -19,7 +19,7 @@ spec:
           sidecar:
             datasources:
               prometheusType: Prometheus
-              url: http://prometheus-stack-prometheus:9090/
+              url: http://prometheus-crd-kube-promet-prometheus:9090/
               timeout: 30
           
           additionalDataSources:
