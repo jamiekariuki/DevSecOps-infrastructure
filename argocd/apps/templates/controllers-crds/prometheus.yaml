@@ -23,12 +23,19 @@ spec:
               timeout: 30
           
           additionalDataSources:
+          - name: Prometheus
+            type: prometheus
+            url: http://prometheus-crd-kube-promet-prometheus:9090
+            access: proxy
+            isDefault: true  
+              
           - name: Loki
             type: loki
             url: http://loki.monitoring.svc.cluster.local:3100
             access: proxy
             version: 1
             orgId: 1
+
            
   destination:
     server: https://kubernetes.default.svc
