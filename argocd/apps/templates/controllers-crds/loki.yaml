@@ -16,6 +16,11 @@ spec:
       values: |
         loki:
           useTestSchema: true
+          storage:
+            bucketNames:
+              chunks: loki-chunks
+              ruler: loki-ruler
+              admin: loki-admin
          
 
   destination:
