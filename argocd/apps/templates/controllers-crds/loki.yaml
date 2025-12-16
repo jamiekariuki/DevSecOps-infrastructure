@@ -21,14 +21,21 @@ spec:
               chunks: loki-chunks
               ruler: loki-ruler
               admin: loki-admin
+
         write:
           affinity: null
+          persistence:
+            volumeClaimsEnabled: false
           
         read:
           affinity: null
+          persistence:
+            volumeClaimsEnabled: false
           
         backend:
-          affinity: null      
+          affinity: null
+          persistence:
+            volumeClaimsEnabled: false      
          
 
   destination:
