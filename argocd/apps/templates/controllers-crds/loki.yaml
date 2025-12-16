@@ -30,7 +30,7 @@ spec:
         read:
           affinity: null
           persistence:
-            volumeClaimsEnabled: false
+            enableStatefulSetAutoDeletePVC: false
           
         backend:
           affinity: null
