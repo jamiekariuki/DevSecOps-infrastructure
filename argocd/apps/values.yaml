@@ -102,3 +102,9 @@ argocdCr:
   path: argocd
   hook: Sync
   syncWaves: "-8"
+
+esoCr:
+  name: eso-cr
+  path: eso
+  hook: Sync
+  syncWaves: "-8"  
