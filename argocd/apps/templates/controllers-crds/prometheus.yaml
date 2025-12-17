@@ -16,12 +16,14 @@ spec:
       values: |
         grafana:
           enabled: true
+
           additionalDataSources:
           - name: Prometheus
             type: prometheus
             url: http://prometheus-crd-kube-promet-prometheus:9090
             access: proxy
-            isDefault: true  
+            orgId: 1
+            version: 1 
 
           - name: Loki
             type: loki
