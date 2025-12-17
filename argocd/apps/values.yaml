@@ -50,7 +50,7 @@ lokiCrd:
   namespace: monitoring
   repoURL: https://grafana.github.io/helm-charts
   chart: loki
-  version: "6.49.0"
+  version: "6.49.0" #6.29
   hook: PreSync
   syncWaves: "-10"  
 
@@ -60,6 +60,16 @@ promtailCrd:
   repoURL: https://grafana.github.io/helm-charts
   chart: promtail
   version: "6.17.1"
+  hook: PreSync
+  syncWaves: "-10" 
+
+
+esoCrd:
+  name: eso-crd
+  namespace: external-secrets
+  repoURL: https://charts.external-secrets.io
+  chart: external-secrets
+  version: "v1.1.0"
   hook: PreSync
   syncWaves: "-10" 
 
