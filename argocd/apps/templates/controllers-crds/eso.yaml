@@ -16,6 +16,7 @@ spec:
       values: |
         serviceAccount:
           create: false
+          name: secret-manager-sa
 
   destination:
     server: https://kubernetes.default.svc
