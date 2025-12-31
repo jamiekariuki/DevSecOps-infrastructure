@@ -24,7 +24,8 @@ module "iam_policy" {
         {
           "Action": [
             "secretsmanager:GetSecretValue",
-            "secretsmanager:DescribeSecret"
+            "secretsmanager:DescribeSecret",
+            "secretsmanager:ListSecrets"
           ],
           "Effect": "Allow",
           "Resource": "${module.db.db_instance_master_user_secret_arn}"
@@ -60,5 +61,5 @@ module "external_secrets_irsa" {
     additional = module.iam_policy.arn
   }
   
-}
+} 
  

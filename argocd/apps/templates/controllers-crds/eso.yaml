@@ -12,9 +12,10 @@ spec:
     repoURL: {{ .Values.esoCrd.repoURL }}
     chart: {{ .Values.esoCrd.chart }}
     targetRevision: {{ .Values.esoCrd.version }}
- #   helm:
- #     values: |
-        
+    helm:
+      values: |
+        serviceAccount:
+          create: false
 
   destination:
     server: https://kubernetes.default.svc

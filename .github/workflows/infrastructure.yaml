@@ -81,7 +81,7 @@ jobs:
         aws-region: us-east-1
         aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
 
-  # inject outputs
+  # inject outputs to our helm repo (eso irsa arn)
   external-secrets-outputs:
     runs-on: ubuntu-latest
     needs: tf-outputs
