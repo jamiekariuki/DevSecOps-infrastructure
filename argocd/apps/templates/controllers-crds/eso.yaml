@@ -17,7 +17,7 @@ spec:
         serviceAccount:
           name: external-secrets-sa
           annotations:
-            eks.amazonaws.com/role-arn: 
+            eks.amazonaws.com/role-arn: arn:aws:iam::466872246229:role/external-secrets-2026010116275415680000000f
         
 
   destination:
