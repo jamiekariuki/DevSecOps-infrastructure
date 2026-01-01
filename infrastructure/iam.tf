@@ -53,7 +53,7 @@ module "external_secrets_irsa" {
   oidc_providers = {
     this = {
       provider_arn               = module.eks.oidc_provider_arn
-      namespace_service_accounts = ["${var.ENV_PREFIX}:${var.service_account_name}"] 
+      namespace_service_accounts = ["external-secrets:external-secrets-sa"] 
     }
   }
 
