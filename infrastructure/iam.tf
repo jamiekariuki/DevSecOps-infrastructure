@@ -40,7 +40,7 @@ module "iam_policy" {
   }
 }
 
-// iam role for service account (irsa)
+// iam role for service account (irsa) for eso
 module "external_secrets_irsa" {
   source = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts"
 

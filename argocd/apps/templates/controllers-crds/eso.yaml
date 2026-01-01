@@ -15,8 +15,10 @@ spec:
     helm:
       values: |
         serviceAccount:
-          create: false
-          name: secret-manager-sa
+          name: external-secrets-sa
+          annotations:
+            eks.amazonaws.com/role-arn: 
+        
 
   destination:
     server: https://kubernetes.default.svc
