@@ -70,6 +70,7 @@ esoCrd:
   repoURL: https://charts.external-secrets.io
   chart: external-secrets
   version: "v1.1.0"
+  values: values/eso.yaml
   hook: PreSync
   syncWaves: "-10" 
 
