@@ -16,6 +16,10 @@ on:
         - stage
         - prod
 
+permissions:
+  contents: write
+
+
 env:
   ENVIRONMENT: dev #${{ github.event_name == 'workflow_dispatch' && github.event.inputs.environment || (github.ref_name == 'release/dev' && 'dev' || github.ref_name == 'release/stage' && 'stage' || 'prod') }
 
@@ -120,6 +124,9 @@ jobs:
 
     - name: Checkout Current Repo
       uses: actions/checkout@v4
+      with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Load TF Outputs
       uses: ./.github/actions/load-tf-outputs
