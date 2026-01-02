@@ -147,6 +147,8 @@ jobs:
     needs:
     - detect-changes
     - terraform
+    - update_eso_service_account
+    - external-secrets-outputs
     if: needs.detect-changes.outputs.both_changed == 'true'
     steps:
     - run: echo "Both terraform and argocd changed, terraform completed. Proceeding to argocd..."
