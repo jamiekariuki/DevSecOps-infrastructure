@@ -1,23 +1,19 @@
 repoURL: "https://github.com/jamiekariuki/DevSecOps-helm-charts.git"
 targetRevision: main
-
 #=======================================================
 #                      app   
 #======================================================
-
 app:
   path: app
   values:
     dev: values-dev.yaml
     stage: values-stage.yaml
     prod: values-prod.yaml
-  hook: PostSync  
-  syncWaves: "1"  
-
+  hook: PostSync
+  syncWaves: "1"
 #=======================================================
 #                      controllers & CRDs 
 #=======================================================
-
 prometheusCrd:
   name: prometheus-crd
   namespace: monitoring
@@ -26,7 +22,6 @@ prometheusCrd:
   version: "80.3.0"
   hook: PreSync
   syncWaves: "-9"
-
 gatewayCrd:
   name: gateway-api-crd
   namespace: envoy-gateway-system
@@ -35,7 +30,6 @@ gatewayCrd:
   version: "v1.6.1"
   hook: PreSync
   syncWaves: "-10"
-   
 certManagerCrd:
   name: cert-manager-crd
   namespace: cert-manager
@@ -44,7 +38,6 @@ certManagerCrd:
   version: "v1.19.2"
   hook: PreSync
   syncWaves: "-10"
-
 lokiCrd:
   name: loki-crd
   namespace: monitoring
@@ -52,8 +45,7 @@ lokiCrd:
   chart: loki
   version: "6.49.0" #6.29
   hook: PreSync
-  syncWaves: "-10"  
-
+  syncWaves: "-10"
 promtailCrd:
   name: promtail-crd
   namespace: monitoring
@@ -61,9 +53,7 @@ promtailCrd:
   chart: promtail
   version: "6.17.1"
   hook: PreSync
-  syncWaves: "-10" 
-
-
+  syncWaves: "-10"
 esoCrd:
   name: eso-crd
   namespace: external-secrets
@@ -71,43 +61,36 @@ esoCrd:
   chart: external-secrets
   version: "v1.1.0"
   hook: PreSync
-  syncWaves: "-10" 
+  syncWaves: "-10"
   serviceAccount:
     name: external-secrets-sa
-    irsaArn: empty
-
-
+    irsaArn: arn:aws:iam::466872246229:role/external-secrets-2026010221270320570000000f
 #=======================================================
 #                      resources                       
 #=======================================================
-
 gatewayCr:
   name: gateway-api-cr
   namespace: gateway
   path: gateway
   hook: Sync
   syncWaves: "-9" #2nd
-
 certManagerCr:
   name: cert-manager-cr
   path: cert-manager
   hook: Sync
   syncWaves: "-10" #1st
-
 prometheusCr:
   name: prometheus-cr
   path: prometheus
   hook: Sync
   syncWaves: "-1"
-
 argocdCr:
   name: argocd-cr
   path: argocd
   hook: Sync
   syncWaves: "-8"
-
 esoCr:
   name: eso-cr
   path: eso
   hook: Sync
-  syncWaves: "-8"  
+  syncWaves: "-8"
