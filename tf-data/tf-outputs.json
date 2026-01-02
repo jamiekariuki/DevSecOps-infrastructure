@@ -1,0 +1,4 @@
+{
+  "irsa_arn": "arn:aws:iam::466872246229:role/external-secrets-2026010217131818060000000f",
+  "SecretsManager_arn": "arn:aws:secretsmanager:us-east-1:466872246229:secret:rds!db-1c8c0b6b-e5b5-4849-bc59-9f76b7abeb35-kXDwwk"
+}
