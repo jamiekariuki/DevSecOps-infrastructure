@@ -31,7 +31,7 @@ echo "Updating $HELM_CHART_PATH..."
 #updating service account name
 yq -i ".serviceAccount.name = \"$SERVICE_ACCOUNT_NAME\"" "$HELM_CHART_PATH"
 #service account role-arn
-yq -i ".serviceAccount.annotations.eks.amazonaws.com/role-arn = \"$IRSA_ARN\"" "$HELM_CHART_PATH"
+yq -i ".serviceAccount.annotations["eks.amazonaws.com/role-arn"] = \"$IRSA_ARN\"" "$HELM_CHART_PATH"
 
 
 #3. Commit & Push

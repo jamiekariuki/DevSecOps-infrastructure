@@ -28,7 +28,7 @@ module "iam_policy" {
             "secretsmanager:ListSecrets"
           ],
           "Effect": "Allow",
-          "Resource": "${module.db.db_instance_master_user_secret_arn}-??????"
+          "Resource": "${module.db.db_instance_master_user_secret_arn}"
         }
       ]
     }
@@ -49,7 +49,7 @@ module "external_secrets_irsa" {
   
 
   attach_external_secrets_policy        = false
-  external_secrets_secrets_manager_arns = ["${module.db.db_instance_master_user_secret_arn}-??????"]
+  external_secrets_secrets_manager_arns = ["${module.db.db_instance_master_user_secret_arn}"]
 
  
   oidc_providers = {
