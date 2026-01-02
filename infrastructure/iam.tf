@@ -46,11 +46,8 @@ module "external_secrets_irsa" {
 
   name = "external-secrets"
 
-  
-
   attach_external_secrets_policy        = false
   external_secrets_secrets_manager_arns = ["${module.db.db_instance_master_user_secret_arn}"]
-
  
   oidc_providers = {
     this = {
