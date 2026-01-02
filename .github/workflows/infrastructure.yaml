@@ -138,7 +138,7 @@ jobs:
         .github/actions/scripts/update-eso.sh \
           "${{ secrets.SERVICE_ACCOUNT_NAME }}" \
           "${{ env.IRSA_ARN }}" \
-          "argocd/apps/values/eso.yaml"
+          "argocd/apps/values.yaml"
 
 
   # Dummy job to act as a gate when both changed

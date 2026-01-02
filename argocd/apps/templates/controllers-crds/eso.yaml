@@ -13,8 +13,11 @@ spec:
     chart: {{ .Values.esoCrd.chart }}
     targetRevision: {{ .Values.esoCrd.version }}
     helm:
-      valueFiles:
-      - {{ .Values.esoCrd.values }}
+      valuesObject:
+        serviceAccount:
+          name: {{ .Values.esoCrd.serviceAccount.name }}
+          annotations:
+            eks.amazonaws.com/role-arn: {{ .Values.esoCrd.serviceAccount.irsaArn }}
 
   destination:
     server: https://kubernetes.default.svc
