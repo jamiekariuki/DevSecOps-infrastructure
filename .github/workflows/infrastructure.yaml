@@ -108,7 +108,6 @@ jobs:
         chmod +x ./.github/actions/scripts/update-helm.sh
 
         .github/actions/scripts/update-helm.sh \
-          
           "${{ env.ENVIRONMENT }}" \
           "${{ secrets.REGION }}" \
           "${{ env.IRSA_ARN }}" \
