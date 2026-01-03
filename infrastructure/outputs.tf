@@ -14,6 +14,7 @@ output "db_instance_address" {
 output "db_instance_name" {
   description = "The database name"
   value       = module.db.db_instance_name
+  sensitive = true
 }
 
 output "db_instance_port" {

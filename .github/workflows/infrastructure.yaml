@@ -19,7 +19,6 @@ on:
 permissions:
   contents: write
 
-
 env:
   ENVIRONMENT: dev #${{ github.event_name == 'workflow_dispatch' && github.event.inputs.environment || (github.ref_name == 'release/dev' && 'dev' || github.ref_name == 'release/stage' && 'stage' || 'prod') }
 
@@ -145,7 +144,6 @@ jobs:
           "${{ env.IRSA_ARN }}" \
           "argocd/apps/values.yaml"
          
-
 
   # Dummy job to act as a gate when both changed
   terraform-gate:
