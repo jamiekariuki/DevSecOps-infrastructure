@@ -64,7 +64,7 @@ esoCrd:
   syncWaves: "-10"
   serviceAccount:
     name: external-secrets-sa
-    irsaArn: arn:aws:iam::466872246229:role/external-secrets-2026010314515397990000000f
+    irsaArn: arn:aws:iam::466872246229:role/external-secrets-2026010319593984420000000f
 #=======================================================
 #                      resources                       
 #=======================================================

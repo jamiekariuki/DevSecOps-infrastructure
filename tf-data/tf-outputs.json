@@ -1,6 +1,6 @@
 {
-  "irsa_arn": "arn:aws:iam::466872246229:role/external-secrets-2026010314515397990000000f",
-  "SecretsManager_arn": "arn:aws:secretsmanager:us-east-1:466872246229:secret:rds!db-b49306ff-8757-44ff-80bf-0373d3cb0046-vbSNY0",
+  "irsa_arn": "arn:aws:iam::466872246229:role/external-secrets-2026010319593984420000000f",
+  "SecretsManager_arn": "arn:aws:secretsmanager:us-east-1:466872246229:secret:rds!db-01cbfbc8-9e69-4556-8968-5684a2ffb86e-8jD5rK",
   "db_instance_address": "dev-db.c0nu6occexai.us-east-1.rds.amazonaws.com",
   "db_instance_name": "posgressdb",
   "db_instance_port": 5432,
