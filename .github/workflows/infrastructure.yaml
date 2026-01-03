@@ -110,7 +110,7 @@ jobs:
         .github/actions/scripts/update-helm.sh \
           
           "${{ env.ENVIRONMENT }}" \
-          "${{ secrets.REGION }}" 
+          "${{ secrets.REGION }}" \
           "${{ env.IRSA_ARN }}" \
           "${{ env.SECRETSMANAGER_ARN }}" \
           "${{ env.DB_INSTANCE_ADDRESS }}" \
