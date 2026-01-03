@@ -119,12 +119,3 @@ module "db" {
   }
 } 
 
-# add missing fields in the secrets manager
-resource "aws_secretsmanager_secret_version" "rds_custom" {
-  secret_id     = module.db.db_instance_master_user_secret_arn
-  secret_string = jsonencode({
-    dbname   = module.db.db_instance_name
-    host     = module.db.db_instance_address     
-    port     = module.db.db_instance_port
-  })
-}

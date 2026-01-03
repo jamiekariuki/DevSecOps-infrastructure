@@ -48,7 +48,16 @@ runs:
 
   - name: Extract outputs -> file
     run: |
-      jq -r '{irsa_arn: .outputs.irsa_arn.value, SecretsManager_arn: .outputs.SecretsManager_arn.value}' terraform.tfstate > tf-outputs.json
+      jq -r '{
+        irsa_arn:                .outputs.irsa_arn.value,
+        SecretsManager_arn:      .outputs.SecretsManager_arn.value,
+        db_instance_address:     .outputs.db_instance_address.value,
+        db_instance_name:        .outputs.db_instance_name.value,
+        db_instance_port:        .outputs.db_instance_port.value,
+        frontend_repository_url: .outputs.frontend_repository_url.value,
+        backend_repository_url:  .outputs.backend_repository_url.value
+      }' terraform.tfstate > tf-outputs.json
+
       echo "Extracted terraform outputs:"
       cat tf-outputs.json
     shell: bash

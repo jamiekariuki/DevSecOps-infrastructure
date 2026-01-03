@@ -1,4 +1,0 @@
-serviceAccount:
-  name: external-secrets-sa
-  annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::466872246229:role/external-secrets-2026010217131818060000000f
