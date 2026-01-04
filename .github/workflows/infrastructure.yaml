@@ -119,38 +119,12 @@ jobs:
           "${{ env.BACKEND_REPO_URL }}" \
           "${{ secrets.SERVICE_ACCOUNT_NAME }}"     
 
-  # inject irsa arn to controller helm value
-  update_eso_service_account:
-    runs-on: ubuntu-latest
-    needs: tf-outputs
-    steps:
-
-    - name: Checkout Current Repo
-      uses: actions/checkout@v4
-      with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Load TF Outputs
-      uses: ./.github/actions/load-tf-outputs
-
-    - name: Run update script
-      run: |
-        chmod +x ./.github/actions/scripts/update-eso.sh
-
-        .github/actions/scripts/update-eso.sh \
-          "${{ secrets.SERVICE_ACCOUNT_NAME }}" \
-          "${{ env.IRSA_ARN }}" \
-          "argocd/apps/values.yaml"
-         
-
   # Dummy job to act as a gate when both changed
   terraform-gate:
     runs-on: ubuntu-latest
     needs:
     - detect-changes
     - terraform
-    - update_eso_service_account
     - update-helm-chart-values
     if: needs.detect-changes.outputs.both_changed == 'true'
     steps:
