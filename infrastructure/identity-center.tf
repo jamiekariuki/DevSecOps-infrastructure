@@ -19,28 +19,28 @@ module "aws-iam-identity-center" {
 
   //users (should not be commited to git if you want to keep this private, use tfvars and apply it locally)
   sso_users = {
-    james : {
+    jamesadmin : {
       group_membership = ["Admin"]
       user_name        = "jamesadmin"
       given_name       = "james"
       family_name      = "james kariuki"
       email            = "jamiekariuki18@gmail.com"
     },
-    john : {
+    johnqa : {
       group_membership = ["QA"]
       user_name        = "johnqa"
       given_name       = "john"
       family_name      = "john doe"
       email            = "jamiekariuki18@gmail.com"
     },
-    mary : {
+    marydev : {
       group_membership = ["Dev"]
       user_name        = "marydev"
       given_name       = "mary"
       family_name      = "mary doe"
       email            = "jamiekariuki18@gmail.com"
     },
-    peter : {
+    peterdev : {
       group_membership = ["Dev"]
       user_name        = "peterdev"
       given_name       = "peter"
