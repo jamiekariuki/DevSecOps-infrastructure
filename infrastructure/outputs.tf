@@ -1,16 +1,20 @@
+locals {
+  admin_role_arn = one(data.aws_iam_roles.admin_sso_role.arns)
+  dev_role_arn   = one(data.aws_iam_roles.dev_sso_role.arns)
+  qa_role_arn    = one(data.aws_iam_roles.qa_sso_role.arns)
+}
 
-
-//identity center role arn
 output "admin_role_arn" {
-  value = data.aws_iam_roles.admin_sso_role.arns[0]
+  value = local.admin_role_arn
 }
 
 output "dev_role_arn" {
-  value = data.aws_iam_roles.dev_sso_role.arns[0]
+  value = local.dev_role_arn
 }
 
 output "qa_role_arn" {
-  value = data.aws_iam_roles.qa_sso_role.arns[0]
+  value = local.qa_role_arn
 }
+
 
 
