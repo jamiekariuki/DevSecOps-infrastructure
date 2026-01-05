@@ -23,24 +23,28 @@ module "aws-iam-identity-center" {
       group_membership = ["Admin"]
       user_name        = "jamesadmin"
       given_name       = "james"
+      family_name      = "james kariuki"
       email            = "jamiekariuki18@gmail.com"
     },
     john : {
       group_membership = ["QA"]
       user_name        = "johnqa"
       given_name       = "john"
+      family_name      = "john doe"
       email            = "jamiekariuki18@gmail.com"
     },
     mary : {
       group_membership = ["Dev"]
       user_name        = "marydev"
       given_name       = "mary"
+      family_name      = "mary doe"
       email            = "jamiekariuki18@gmail.com"
     },
     peter : {
       group_membership = ["Dev"]
       user_name        = "peterdev"
       given_name       = "peter"
+      family_name      = "peter doe"
       email            = "jamiekariuki18@gmail.com"
     },
   }
