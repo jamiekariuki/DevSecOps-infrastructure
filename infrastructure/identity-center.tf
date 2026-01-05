@@ -31,21 +31,21 @@ module "aws-iam-identity-center" {
       user_name        = "johnqa"
       given_name       = "john"
       family_name      = "john doe"
-      email            = "jamiekariuki18@gmail.com"
+      email            = "johnqa@example.com"
     },
     marydev : {
       group_membership = ["Dev"]
       user_name        = "marydev"
       given_name       = "mary"
       family_name      = "mary doe"
-      email            = "jamiekariuki18@gmail.com"
+      email            = "marydev@example.com"
     },
     peterdev : {
       group_membership = ["Dev"]
       user_name        = "peterdev"
       given_name       = "peter"
       family_name      = "peter doe"
-      email            = "jamiekariuki18@gmail.com"
+      email            = "peterdev@example.com"
     },
   }
 
