@@ -36,7 +36,6 @@ module "eks" {
     provider_key_arn = aws_kms_key.k8s_encryption.arn
     resources        = ["secrets"]
   }
-
   
   endpoint_public_access = true
 
@@ -65,7 +64,7 @@ module "eks" {
   access_entries = {
     # admin
     admin = {
-      principal_arn = admin_role_arn
+      principal_arn = local.admin_role_arn
       kubernetes_groups = ["admin"]
 
       policy_associations = {
@@ -79,7 +78,7 @@ module "eks" {
     }
     # qa
     qa = {
-      principal_arn = qa_role_arn
+      principal_arn = local.qa_role_arn
       kubernetes_groups = ["qa"]
 
       policy_associations = {
@@ -93,7 +92,7 @@ module "eks" {
     }
     # admin
     dev = {
-      principal_arn = dev_role_arn
+      principal_arn = local.dev_role_arn
       kubernetes_groups = ["dev"]
 
       policy_associations = {
@@ -123,7 +122,7 @@ module "eks" {
   namespace        = "argocd"
   create_namespace = true
 
-    values = [
+  values = [
     yamlencode({
       server = {
         service = {
