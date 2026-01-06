@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "state" {
-   bucket        = "${var.aws_account_id}-state"
+   bucket        = var.tf_state_bucket
    force_destroy = true
 }
 

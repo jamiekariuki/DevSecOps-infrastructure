@@ -10,6 +10,8 @@ inputs:
     required: true
   region:
     required: true
+  tf_state_bucket:
+    required: true  
 
   aws_account_id:
     required: true
@@ -40,7 +42,13 @@ runs:
   - name: Terraform Init
     working-directory: ${{inputs.directory}}
     shell: bash
-    run: terraform init -upgrade
+    run: |
+      terraform init -upgrade \
+        -backend-config="bucket=${{ inputs.tf_state_bucket }}" \
+        -backend-config="key=networking/terraform.tfstate" \
+        -backend-config="region=${{ inputs.region }}" \
+        -backend-config="dynamodb_table=terraform-locks" \
+        -backend-config="encrypt=true"
 
   - name: Select Workspace
     working-directory: ${{inputs.directory}}

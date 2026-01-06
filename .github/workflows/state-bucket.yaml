@@ -35,3 +35,4 @@ jobs:
         terraform apply -auto-approve -input=false \
           -var="aws_account_id=$AWS_ACCOUNT_ID" \
           -var="region=$REGION" \
+          -var="tf_state_bucket=${{ secrets.TF_STATE_BUCKET }}"

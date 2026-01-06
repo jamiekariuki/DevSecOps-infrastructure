@@ -14,6 +14,8 @@ inputs:
     required: true
   directory:
     required: true
+  tf_state_bucket:
+    required: true  
 
 runs:
   using: "composite"
@@ -31,7 +33,13 @@ runs:
   - name: Terraform Init
     working-directory: ${{inputs.directory}}
     shell: bash
-    run: terraform init -upgrade
+    run: |
+      terraform init -upgrade \
+        -backend-config="bucket=${{ inputs.tf_state_bucket }}" \
+        -backend-config="key=networking/terraform.tfstate" \
+        -backend-config="region=${{ inputs.region }}" \
+        -backend-config="dynamodb_table=terraform-locks" \
+        -backend-config="encrypt=true"
 
   - name: Terraform Apply
     working-directory: ${{inputs.directory}}
