@@ -1,20 +1,46 @@
-locals {
-  admin_role_arn = one(data.aws_iam_roles.admin_sso_role.arns)
-  dev_role_arn   = one(data.aws_iam_roles.dev_sso_role.arns)
-  qa_role_arn    = one(data.aws_iam_roles.qa_sso_role.arns)
+ output "irsa_arn" {
+  value = module.external_secrets_irsa.arn
 }
 
+output "SecretsManager_arn" {
+  value = module.db.db_instance_master_user_secret_arn
+} 
+
+output "db_instance_address" {
+  description = "The address of the RDS instance"
+  value       = module.db.db_instance_address
+}
+
+output "db_instance_name" {
+  description = "The database name"
+  value       = module.db.db_instance_name
+  sensitive = true
+}
+
+output "db_instance_port" {
+  description = "The database port"
+  value       = module.db.db_instance_port
+}
+
+output "frontend_repository_url" {
+  value = module.ecr-frontend.repository_url
+}
+
+output "backend_repository_url" {
+  value = module.ecr-backend.repository_url
+}
+
+//identity center role arn
 output "admin_role_arn" {
-  value = local.admin_role_arn
+  value = data.aws_iam_roles.admin_sso_role.arns[0]
 }
 
 output "dev_role_arn" {
-  value = local.dev_role_arn
+  value = data.aws_iam_roles.dev_sso_role.arns[0]
 }
 
 output "qa_role_arn" {
-  value = local.qa_role_arn
+  value = data.aws_iam_roles.qa_sso_role.arns[0]
 }
-
 
 
