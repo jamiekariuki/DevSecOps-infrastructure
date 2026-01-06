@@ -68,7 +68,7 @@ jobs:
         db_name: ${{ secrets.DB_NAME }}
         service_account_name: ${{ secrets.SERVICE_ACCOUNT_NAME }}
         environment: ${{ env.ENVIRONMENT }}
-        tf_state_bucket: ${{ secrest.TF_STATE_BUCKET }}
+        tf_state_bucket: ${{ secrets.TF_STATE_BUCKET }}
         directory: infrastructure
 
   tf-outputs:
@@ -85,7 +85,7 @@ jobs:
         aws-region: us-east-1
         aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
 
-  # inject outputs to our helm repo (secrest manager arn, db port,name,adress/host)
+  # inject outputs to our helm repo (secrets manager arn, db port,name,adress/host)
   update-helm-chart-values:
     runs-on: ubuntu-latest
     needs: tf-outputs
@@ -148,7 +148,7 @@ jobs:
         region: ${{ secrets.REGION }}
         cluster_name: ${{ secrets.CLUSTER_NAME }}
         aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-        tf_state_bucket: ${{ secrest.TF_STATE_BUCKET }}
+        tf_state_bucket: ${{ secrets.TF_STATE_BUCKET }}
         directory: argocd
 
   # Step 3: ArgoCD Apply - Dependent path (both changed, waits for terraform)
@@ -168,5 +168,5 @@ jobs:
         region: ${{ secrets.REGION }}
         cluster_name: ${{ secrets.CLUSTER_NAME }}
         aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-        tf_state_bucket: ${{ secrest.TF_STATE_BUCKET }}
+        tf_state_bucket: ${{ secrets.TF_STATE_BUCKET }}
         directory: argocd
